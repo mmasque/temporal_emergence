@@ -110,6 +110,59 @@ class TPMMaker:
         return TPM, num_transitions
 
     @staticmethod
+    def get_TPM_nonbinary_nonrandom(binaryneurons, K, skipby, required_obs, startindex):
+        """Given an array of binarised neuron spike-trains
+        and a K value for how many time-steps to include in a single state, 
+        get the TPM of the system. 
+            - Skipby controls where the future state starts: given that the current state
+            starts at T, future state starts at T+skipby
+        Example: 
+            if K = 3, then find the TPM that describes 
+            the transition probability of System[t-2,t-1,t] --> System[t+1,t+2,t+3]
+
+        Returns:
+            - A TPM of the system in state-state mode (TODO: conventions?)
+            - A matrix A with the same dimensions of TPM, where A[i,j] is the 
+            number of transitions that were used to calculate the value of TPM[i,j].
+        
+        - always samples in order, starting from startindex
+        """
+        assert K >= 1
+        assert binaryneurons.shape[0] >= 1
+
+        size = (2**K)**binaryneurons.shape[0]
+        
+        # initialise TPM and num_transitions arrays
+        TPM = np.zeros((size, size))
+        num_transitions = np.zeros((size, size))
+
+        # get an ordered list of indices at which to look at transitions
+        # start at K-1 because our state at time i looks BACK to i-1, i-2,.. to build the rest of state
+        # but here we actually want to start at K-1 + startindex to shift to startindex 
+        rand_indices = np.array(list(range(K-1+startindex, binaryneurons.shape[1] - skipby, 2)))
+        print(rand_indices)
+        for i in rand_indices:
+            curr_state = binaryneurons[:,i-(K-1):(i+1)]
+            i_c = TPMMaker.get_TPM_index(curr_state)
+            total = sum(num_transitions[i_c,:])
+            if total >= required_obs:   # don't add this observation if we already have enough
+                continue
+
+            future_state = binaryneurons[:,i-(K-1) + skipby:(i+1) + skipby]   # Ugly indexing 
+            i_f = TPMMaker.get_TPM_index(future_state)
+
+            num_transitions[i_c, i_f] += 1
+        
+        for j in range(num_transitions.shape[0]):
+            total = sum(num_transitions[j,:])
+            if total < required_obs:
+                raise ValueError("State with index " + str(j) + \
+                " was observed in the data fewer than " + str(required_obs) + " times, (" + str(total) + " times only).")
+            
+            TPM[j,:] = num_transitions[j,:] / total
+        
+        return TPM, num_transitions
+    @staticmethod
     def TPM_from_spiketrains(spiketrains, S, K, skip, required_obs):
 
         # get the binarised spike trains for each neuron
