@@ -1,6 +1,6 @@
 # temporal_emergence
 
-This repository supports the analysis of spiking time-series data using various methods:
+### This repository supports the analysis of spiking time-series data using various methods:
 
 - IIT's [PyPhi](https://pyphi.readthedocs.io/en/latest/): Analyse data using IIT's Phi at different temporal scales. The main contribution is in temporal_emergence.py, where various *coarse graining* methods are implemented. These enable IIT analysis and comparison across temporal scales, in the search for *temporal emergence* (Hoel et al., 2013; Hoel et al., 2016). 
 - [GLMCC](https://github.com/NII-Kobayashi/GLMCC): find functional connectivity between pairs of neurons in terms of Post Synaptic Potentials (PSPs).
