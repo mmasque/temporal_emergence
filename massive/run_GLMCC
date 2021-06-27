@@ -1,0 +1,4 @@
+python find_connections.py Cori_2016-12-14 GLMCC/Cori_2016-12-14_probe1 1
+cd GLMCC
+python Est_Data.py Cori_2016-12-14_probe1 4 exp LR
+cd ..
