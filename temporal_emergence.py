@@ -55,7 +55,31 @@ class TPMMaker:
             dec_node = int("".join(str(int(j)) for j in state[i,:]), 2)
             index += dec_node * n ** i
         return index
+    @staticmethod
+    def get_num_state_occurrences(spiketrains, S, K, skipby):
+        """Gets the number of occurrences of each state in the TPM, if we sample
+        all occurrences of each state when creating the TPM (which we don't)
+        """
+        binaryneurons = TPMMaker.get_binarised_trains(spiketrains, S)
+        assert K >= 1
+        assert binaryneurons.shape[0] >= 1
 
+        size = (2**K)**binaryneurons.shape[0]
+        
+        # initialise num_transition 
+        num_transitions = np.zeros(size)
+
+        # get a randomly ordered list of indices at which to look at transitions
+        # start at K-1 because our state at time i looks BACK to i-1, i-2,.. to build the rest of state
+        rand_indices = np.array(list(range(K-1, binaryneurons.shape[1] - skipby)))
+        np.random.shuffle(rand_indices)
+
+        for i in rand_indices:
+            curr_state = binaryneurons[:,i-(K-1):(i+1)]
+            i_c = TPMMaker.get_TPM_index(curr_state)
+            num_transitions[i_c] += 1
+        
+        return num_transitions
     @staticmethod
     def get_TPM_nonbinary(binaryneurons, K, skipby, required_obs):
         """Given an array of binarised neuron spike-trains
@@ -108,6 +132,7 @@ class TPMMaker:
             TPM[j,:] = num_transitions[j,:] / total
         
         return TPM, num_transitions
+        
 
     @staticmethod
     def get_TPM_nonbinary_nonrandom(binaryneurons, K, skipby, required_obs, startindex):
@@ -162,10 +187,10 @@ class TPMMaker:
             TPM[j,:] = num_transitions[j,:] / total
         
         return TPM, num_transitions
-    @staticmethod
-    def TPM_from_spiketrains(spiketrains, S, K, skip, required_obs):
 
-        # get the binarised spike trains for each neuron
+    @staticmethod
+    def get_binarised_trains(spiketrains,S):
+        # get the binarised spike trains for each neuron from a train of float spikes
         # create a multidimensional array of the spiketrains by not considering further than the shortest train
         binarised_trains = [[] for _ in range(len(spiketrains))]
         min_length = math.inf
@@ -173,8 +198,12 @@ class TPMMaker:
             binarised_trains[i] = Neuron.binarise_spiketrain(spiketrains[i], S)
             min_length = min(min_length, len(binarised_trains[i]))
         
-        binarised_trains = np.array([binarised_trains[i][0:min_length] for i in range(len(binarised_trains))])   # probably slow? 
-        # compute the TPM 
+        return np.array([binarised_trains[i][0:min_length] for i in range(len(binarised_trains))])   # probably slow? 
+
+    
+    @staticmethod
+    def TPM_from_spiketrains(spiketrains, S, K, skip, required_obs):
+        binarised_trains = TPMMaker.get_binarised_trains(spiketrains, S)
         return TPMMaker.get_TPM_nonbinary(binarised_trains, K, skip, required_obs)
 
 
@@ -239,7 +268,14 @@ class CoarseGrainer:
             num_micro_states_per_elem.append(sum(len(x) for x in elem))
 
         state_map = {i : [] for i in range(num_macro_states)}
-        
+        """
+        [[(0,1,2),(3)], [(0,1,2),(3)]]
+        {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]}
+        input: [[[ms, ms], [ms, ms]], [[ms, ms], [ms, ms]], [[ms, ms], [ms, ms]]]
+        (2,2), (2,2), (3,1)
+        To get each micro index: 
+
+        """
         # for each micro state, get its index, and then get its macro index
         # to get macro state from a micro index, we need 
 

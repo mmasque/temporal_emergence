@@ -51,23 +51,15 @@ def separating_threshold(bins,ys):
         max_peak_100ms = peaks_100ms[max_peak_100ms_ind] # index of max early peak in xs,ys
 
         VOID_THRESH = 0.7
-        best_void, best_2nd_ind, local_min = 0, None, None
         for i in range(max_peak_100ms_ind+1, len(peaks)):
             p2 = peaks[i]
             local_min_ind = max_peak_100ms + np.argmin(ys[max_peak_100ms:p2+1])    # local min between peaks
             local_min_i = ys[local_min_ind]
             void = 1 - local_min_i/np.sqrt(ys[max_peak_100ms] * ys[p2])   # void param
-            print(void)
             if void > VOID_THRESH:  # require void larger than thresh
-                if void > best_void:    # update best void if needed
-                    best_void, best_2nd_ind, local_min = max_peak_100ms, p2, local_min_ind
+                return max_peak_100ms, p2, local_min_ind, void, s_xs_ys
 
-        if best_2nd_ind == None:   # if no second peak had good enough void 
-            raise ValueError("Didn't find a burst")
-
-        return max_peak_100ms, best_2nd_ind, local_min, void, s_xs_ys
-    else:
-        raise ValueError("Didn't find a burst")
+    raise ValueError("Didn't find a burst")
     
 def is_bursting(cellfile):
     spikes = np.loadtxt(cellfile)
@@ -84,27 +76,30 @@ def is_bursting(cellfile):
         return False, None
 # %%
 if __name__ == "__main__":
-    i,j = 143,187
+    indices = np.array([ 48, 105, 199, 222, 299, 304, 363, 366, 318,  16, 302, 347, 187,
+        30,   6, 326, 359, 150, 312, 362, 306,  13, 325, 107,  88, 259,
+       316, 336, 120, 251,  19, 332, 335,  66, 343,  99, 322, 234, 126,
+       352, 120, 277, 260,  86, 117, 163, 345])
 
     # for neuron i
-    spikes = np.loadtxt("GLMCC/Cori_2016-12-14_probe1/cell" + str(i) + ".txt")
-    diff_spikes = np.diff(spikes)
-    
-    logbins = np.logspace(0,5,100)
-    centered_bins = np.array([(logbins[i] + logbins[i+1])/2 for i in range(len(logbins)-1)])
-    ys, _ = np.histogram(diff_spikes, bins=logbins)
-    try:
-        peak1, peak2, min_ind, void, fit = separating_threshold(centered_bins,ys)
-        plt.hist(diff_spikes, bins=logbins)
-        plt.scatter([centered_bins[(peak1, peak2)]], [ys[(peak1, peak2)]], color='red')
-        plt.scatter([centered_bins[min_ind]], [ys[min_ind]], color='green')
-        plt.xscale("log")
-        plt.plot(fit[:,0], fit[:, 1])
+    for i in indices:
+        spikes = np.loadtxt("GLMCC/Cori_2016-12-14_probe1/cell" + str(i) + ".txt")
+        diff_spikes = np.diff(spikes)
+        
+        logbins = np.logspace(0,5,100)
+        centered_bins = np.array([(logbins[i] + logbins[i+1])/2 for i in range(len(logbins)-1)])
+        ys, _ = np.histogram(diff_spikes, bins=logbins)
+        try:
+            peak1, peak2, min_ind, void, fit = separating_threshold(centered_bins,ys)
+            plt.xscale("log")
+            plt.hist(diff_spikes, bins=logbins, alpha=0.7)
+            plt.plot(fit[:,0], fit[:, 1])
+            plt.plot([fit[np.array([peak1, peak2]), 0]], [fit[np.array([peak1, peak2]), 1]], 'r.')
+            plt.plot([fit[min_ind, 0]], [fit[min_ind, 1]], 'g.')
 
-        print(ys[min_ind], ys[peak1], ys[peak2])
-        print("Void: ", 1-ys[min_ind]/np.sqrt(ys[peak1] * ys[peak2]))
-
-    except:
-        pass
-    ## PLOT
+            plt.title(str(i))
+            plt.savefig("Figures/BURSTLOGISI/cell" + str(i) + ".png")
+            plt.close()
+        except:
+            pass
 # %%

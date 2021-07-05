@@ -42,7 +42,7 @@ def get_good_locations(folder, probe):
     return brain_location[good_indices_probe1_channels]
 
 
-def get_location_plot(positions, connections, savefile=None):
+def get_location_plot(neurons, positions, connections, savefile=None):
     """Plots a location of neurons in Allen common framework, colorcoded by location, with connection edges
         neurons: list of indices of neurons, corresponding to the indices in the connection tuples
         positions: [(x,y,z,brain_location)]
@@ -66,11 +66,11 @@ def get_location_plot(positions, connections, savefile=None):
         ze += [positions[i][2],positions[j][2],None]
         ws += w
     ### GET POSITIONS, leaving out brain_location string
-    positions_just3d = np.array([(x,y,z) for (x,y,z,_) in positions])
+    positions_just3d = np.array([(x,y,z) for (x,y,z,_) in positions[neurons]])
     xyz = [np.array(i) for i in zip(*positions_just3d)]
 
     ### GET BRAIN LOCATION labels
-    locations = np.array([l for (_,_,_,l) in positions])
+    locations = np.array([l for (_,_,_,l) in positions[neurons]])
 
     ## GET COLORS TO MATCH BRAIN LOCATION
     ind_locations = list(set(locations))
@@ -99,9 +99,16 @@ def get_location_plot(positions, connections, savefile=None):
     
 
 if __name__ == "__main__":
-    probe1_371 = np.loadtxt("results/connectivity_Cori_2016-12-14_probe1/W_py_5400.csv", delimiter=",")
-    connections = get_connections(probe1_371)
+    #probe1_371 = np.loadtxt("results/connectivity_Cori_2016-12-14_probe1/W_py_5400.csv", delimiter=",")
+    #connections = get_connections(probe1_371)
+    connections = [(10, 323),(15, 292),(15, 297),(15, 298),(74, 289),(108, 213),(121, 238),(143, 168),(143, 293),(143, 331),
+ (213, 235),(213, 292),(213, 296),(213, 301),(213, 366),(232, 269),(232, 290),(232, 305),(232, 348),(235, 297),(269, 305),
+ (269, 348),(288, 289),(289, 293),(292, 298),(295, 305),(296, 298),(296, 366),(297, 298),(298, 301)]
+    
+    connections = [(i,j,[0]) for (i,j) in connections]
 
+    neurons = [list(i) for i in zip(*connections)]
+    neurons = sorted(list(set(neurons[0] + neurons[1])))
     # get only the good neurons
     annotations = SteinmetzLoader.get_annotations("Cori_2016-12-14")
     good_indices = np.where(annotations >= 2)
@@ -119,4 +126,4 @@ if __name__ == "__main__":
     brain_location = np.genfromtxt("Cori_2016-12-14/channels.brainLocation.tsv", dtype=None, delimiter='\t', names=True)
     good_indices_probe1_channel_locations = get_good_locations("Cori_2016-12-14", 1)
     
-    get_location_plot(good_indices_probe1_channel_locations, connections, "networks/cori_2016-12-14_probe1.html")
+    get_location_plot(neurons, good_indices_probe1_channel_locations, connections, "networks/cori_2016-12-14_probe1_highfiring.html")
