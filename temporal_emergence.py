@@ -302,10 +302,12 @@ class PhiCalculator:
         return sum(phis) / len(phis)
     
     @staticmethod
-    def get_macro_average_phi(micro_TPM, verbose=True):
+    def get_macro_average_phi(micro_TPM, verbose=True, state_map=None):
 
         num_states_per_elem = [2,2]
-        state_map = {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]}
+        if state_map == None:   # have a default state map
+            state_map = {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]} 
+
         macro_TPM = CoarseGrainer.coarse_grain_nonbinary_TPM(micro_TPM, state_map, num_states_per_elem)
         #np.savetxt("TPMs/macro_example_143_168.csv", macro_TPM)
         # Macro analysis where bursting is one state, and everything else is another
@@ -327,6 +329,20 @@ class PhiCalculator:
             print(sia.cut)
         return sum(phis) / len(phis)
 
+    @staticmethod
+    def all_coarsegrains_get_macro_average_phi(micro_TPM, verbose=True):
+
+        num_states_per_elem = [2,2]
+        state_map_1 = {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]}
+        state_map_2 = {0: [0], 1: [4,8,12], 2: [1,2,3], 3: [5,6,7,9,10,12,13,14,15]}
+        state_map_3 = {0: [0], 1: [1, 2], 2: [3], 4: [4,8], 5: [5, 9, 6, 10], 6: [7,11], 7: [12], 8: [13, 14], 9: [15]}
+        
+        states = [state_map_1, state_map_2, state_map_3]
+        phis = []
+        for state_map in states:
+            average_phi = PhiCalculator.get_macro_average_phi(micro_TPM, verbose=verbose, state_map=state_map)
+            phis.append(average_phi)
+        return phis
 class Helpers:
     @staticmethod
     def get_bin_states(l):
