@@ -1301,3 +1301,757 @@
 2021-07-07 11:54:03,849 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
 2021-07-07 11:54:04,896 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
 2021-07-07 11:54:04,915 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:51:38,649 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 15:51:38,650 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 15:51:38,651 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 15:54:16,077 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 15:54:16,078 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 15:54:16,078 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 15:54:40,681 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:42,216 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:42,243 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:43,257 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:43,277 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:44,715 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:44,746 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:47,029 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:47,066 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:48,823 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:48,851 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:50,002 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:50,047 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:51,298 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:51,329 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:52,694 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:52,716 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:53,823 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:53,852 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:54,895 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:54,921 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:55,861 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:55,879 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:56,898 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:56,919 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:57,950 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:57,979 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:54:59,080 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:54:59,104 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:00,031 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:00,046 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:00,997 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:01,042 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:01,983 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:02,004 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:03,185 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:03,206 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:04,576 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:04,596 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:05,957 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:05,995 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:07,315 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:07,336 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:08,420 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:08,450 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:09,567 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:09,601 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:10,728 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:10,760 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:11,682 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:11,710 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:12,629 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:12,654 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:13,588 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 15:55:13,606 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 15:55:14,538 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:15,401 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:16,856 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:16,878 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:18,507 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:18,541 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:20,017 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:20,067 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:22,772 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:22,809 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:24,128 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:24,158 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:25,495 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:25,531 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:26,878 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:26,913 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:29,503 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:29,544 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:31,244 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:31,280 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:32,632 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:32,661 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:33,933 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:33,959 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:36,312 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:36,344 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:37,664 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:37,699 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:39,008 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:39,040 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:40,484 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:40,519 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:43,048 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:43,092 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:44,732 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:44,769 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:46,134 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:46,172 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:47,431 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:47,461 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:49,887 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:49,922 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:51,308 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:51,341 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:52,658 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:52,688 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:54,424 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:54,457 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:56,890 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:56,926 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:58,259 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:58,287 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:01:59,666 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:01:59,711 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:02:01,084 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:02:01,408 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:02:03,831 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:04:22,919 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:04:22,919 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:04:22,920 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:05:11,624 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:12,526 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:12,552 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:14,441 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:14,473 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:16,122 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:16,155 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:17,735 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:17,749 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:18,976 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:19,006 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:21,080 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:21,110 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:22,160 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:22,182 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:23,076 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:23,094 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:24,015 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:24,041 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:24,930 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:24,948 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:26,279 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:26,321 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:27,449 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:27,477 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:28,327 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:28,349 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:29,275 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:29,297 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:30,202 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:30,228 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:31,192 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:31,221 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:32,799 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:32,836 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:33,813 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:33,849 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:34,779 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:34,799 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:35,710 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:35,735 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:36,572 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:36,594 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:37,464 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:37,485 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:38,983 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:39,010 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:39,932 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:39,954 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:40,819 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:40,843 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:41,714 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:41,733 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:42,601 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:05:42,621 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:05:43,503 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:07:57,275 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:07:57,275 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:07:57,276 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:08:20,928 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:08:20,928 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:08:20,929 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:08:39,539 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:08:39,540 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:08:39,540 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:09:33,503 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:09:33,504 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:09:33,504 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:10:55,407 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:10:55,407 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:10:55,409 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:11:21,816 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:11:21,817 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:11:21,819 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:12:50,770 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:12:50,771 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:12:50,778 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:14:21,903 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:14:21,904 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:14:21,908 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:14:47,390 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:14:52,082 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:14:52,118 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:14:57,285 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:14:57,328 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:15:02,640 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:15:02,674 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:15:06,875 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:15:06,937 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:15:12,082 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:15:12,120 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:15:17,242 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:15:17,277 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:15:22,212 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:15:22,258 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:15:26,917 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:17:35,423 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:17:35,424 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:17:35,426 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:18:13,371 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:18:19,586 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:18:19,664 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:18:26,178 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:18:26,228 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:18:32,167 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:18:32,206 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:18:42,864 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:18:42,932 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:18:53,155 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:18:53,199 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:18:58,006 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:18:58,063 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:19:07,352 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:19:07,397 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:19:12,407 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:23:01,904 [pyphi.conf] INFO MainProcess: PyPhi v1.2.0
+2021-07-08 16:23:01,904 [pyphi.conf] INFO MainProcess: Using default configuration (no configuration file provided)
+2021-07-08 16:23:01,907 [pyphi.conf] INFO MainProcess: Current PyPhi configuration:
+ { 'ACTUAL_CAUSATION_MEASURE': 'PMI',
+  'ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS': True,
+  'CACHE_POTENTIAL_PURVIEWS': True,
+  'CACHE_REPERTOIRES': True,
+  'CACHE_SIAS': False,
+  'CACHING_BACKEND': 'fs',
+  'CLEAR_SUBSYSTEM_CACHES_AFTER_COMPUTING_SIA': False,
+  'CUT_ONE_APPROXIMATION': False,
+  'FS_CACHE_DIRECTORY': '__pyphi_cache__',
+  'FS_CACHE_VERBOSITY': 0,
+  'LOG_FILE': 'pyphi.log',
+  'LOG_FILE_LEVEL': 'INFO',
+  'LOG_STDOUT_LEVEL': 'WARNING',
+  'MAXIMUM_CACHE_MEMORY_PERCENTAGE': 50,
+  'MEASURE': 'AID',
+  'MONGODB_CONFIG': { 'collection_name': 'cache',
+                      'database_name': 'pyphi',
+                      'host': 'localhost',
+                      'port': 27017},
+  'NUMBER_OF_CORES': -1,
+  'PARALLEL_COMPLEX_EVALUATION': False,
+  'PARALLEL_CONCEPT_EVALUATION': False,
+  'PARALLEL_CUT_EVALUATION': True,
+  'PARTITION_TYPE': 'TRI',
+  'PICK_SMALLEST_PURVIEW': False,
+  'PRECISION': 6,
+  'PRINT_FRACTIONS': True,
+  'PROGRESS_BARS': True,
+  'REDIS_CACHE': False,
+  'REDIS_CONFIG': {'db': 0, 'host': 'localhost', 'port': 6379, 'test_db': 1},
+  'REPR_VERBOSITY': 2,
+  'SINGLE_MICRO_NODES_WITH_SELFLOOPS_HAVE_PHI': False,
+  'SYSTEM_CUTS': '3.0_STYLE',
+  'USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE': True,
+  'VALIDATE_CONDITIONAL_INDEPENDENCE': True,
+  'VALIDATE_SUBSYSTEM_STATES': True,
+  'WELCOME_OFF': False}
+2021-07-08 16:23:46,367 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:23:55,830 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:23:55,952 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:24:09,610 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:24:09,707 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:24:24,413 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:24:24,530 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:24:35,024 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:24:35,145 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:24:50,595 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:24:50,686 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:25:05,818 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:25:05,912 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:25:22,076 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:25:22,199 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:25:35,505 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:25:35,889 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:25:49,725 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:25:49,803 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:26:05,076 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:26:05,189 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:26:18,909 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:26:19,184 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:26:31,281 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:26:31,394 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:26:45,609 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:26:45,706 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:26:59,716 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:26:59,853 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:27:12,738 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:27:12,857 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:27:27,170 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
+2021-07-08 16:27:27,260 [pyphi.compute.subsystem] INFO MainProcess: Calculating big-phi data for Subsystem('A', 'B')...
+2021-07-08 16:27:42,011 [pyphi.compute.subsystem] INFO MainProcess: Finished calculating big-phi data for Subsystem('A', 'B').
