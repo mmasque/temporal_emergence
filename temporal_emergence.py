@@ -259,25 +259,39 @@ class CoarseGrainer:
 
     @staticmethod
     def get_state_map(coarse_grain):
-        # TODO: finish
-        # get how many macro states we have
+        """Get the map from each micro state to its macro state
+        IMPORTANT: Works only for coarse grainings of pairs of neurons! 
+        """
+        assert len(coarse_grain) == 2, "Require exactly 2 elements"
+        
         num_micro_states_per_elem = []
         num_macro_states = 1
         for elem in coarse_grain:
             num_macro_states *= len(elem)
             num_micro_states_per_elem.append(sum(len(x) for x in elem))
 
-        state_map = {i : [] for i in range(num_macro_states)}
-        """
-        [[(0,1,2),(3)], [(0,1,2),(3)]]
-        {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]}
-        input: [[[ms, ms], [ms, ms]], [[ms, ms], [ms, ms]], [[ms, ms], [ms, ms]]]
-        (2,2), (2,2), (3,1)
-        To get each micro index: 
+        
+        new_coarse_grain = []
+        for elem in coarse_grain:
+            states = []
+            for s in range(len(elem)):
+                states.append((elem[s], s))
+            new_coarse_grain.append(states)
 
-        """
-        # for each micro state, get its index, and then get its macro index
-        # to get macro state from a micro index, we need 
+        # for every element pair
+        state_map = {}
+        for p in range(len(new_coarse_grain[0])):
+            for q in range(len(new_coarse_grain[1])):
+                states_p = [num_micro_states_per_elem[0] * e for e in new_coarse_grain[0][p][0]]
+                states_q = list(new_coarse_grain[1][q][0])
+                
+                micro_system_states = np.add.outer(states_p, states_q).ravel()
+                macro_state_p = new_coarse_grain[0][p][1]
+                macro_state_q = new_coarse_grain[1][q][1]
+                macro_state = (macro_state_p * len(new_coarse_grain[0])) + macro_state_q
+
+                state_map[macro_state] = micro_system_states.tolist()
+        return state_map
 
 class PhiCalculator:
     @staticmethod
@@ -331,14 +345,29 @@ class PhiCalculator:
 
     @staticmethod
     def all_coarsegrains_get_macro_average_phi(micro_TPM, verbose=True):
+        
+        # ways to coarse grain each element
+        element_coarse_grainings = [[[0], [1,2,3]], [[0,1,2],[3]], [[0], [1,2], [3]]]
+        states = []
+        num_states_l = []
+        for e1 in element_coarse_grainings:
+            for e2 in element_coarse_grainings:
+                c_state_map = CoarseGrainer.get_state_map([e1, e2])
+                c_num_states = [len(e) for e in [e1,e2]]
 
-        num_states_per_elem = [2,2]
+                states.append(c_state_map)
+                num_states_l.append(c_num_states)
+            
+        print(states)
+        print(num_states_l)
+        """
         state_map_1, num_states_1 = {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]}, [2,2]
         state_map_2, num_states_2 = {0: [0], 1: [4,8,12], 2: [1,2,3], 3: [5,6,7,9,10,12,13,14,15]}, [2,2]
         state_map_3, num_states_3 = {0: [0], 1: [1, 2], 2: [3], 3: [4,8], 4: [5, 9, 6, 10], 5: [7,11], 6: [12], 7: [13, 14], 8: [15]}, [3,3]
         
         states = [state_map_1, state_map_2, state_map_3]
         num_states_l = [num_states_1, num_states_2, num_states_3]
+        """
         phis = []
         for i in range(len(states)):
             state_map, num_states = states[i], num_states_l[i]
@@ -379,6 +408,7 @@ class Helpers:
             state = tuple(state)
             states.append(state)
         return states
+    
 
 class DataGenerator:
     def __init__(self, TPM, base):
