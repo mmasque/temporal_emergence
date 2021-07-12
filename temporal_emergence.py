@@ -1,5 +1,6 @@
 import numpy as np 
 import matplotlib.pyplot as plt
+from numpy.lib.arraysetops import isin
 import pandas as pd
 import random
 import math
@@ -282,13 +283,13 @@ class CoarseGrainer:
         state_map = {}
         for p in range(len(new_coarse_grain[0])):
             for q in range(len(new_coarse_grain[1])):
-                states_p = [num_micro_states_per_elem[0] * e for e in new_coarse_grain[0][p][0]]
+                states_p = [num_micro_states_per_elem[1] * e for e in new_coarse_grain[0][p][0]]
                 states_q = list(new_coarse_grain[1][q][0])
                 
                 micro_system_states = np.add.outer(states_p, states_q).ravel()
                 macro_state_p = new_coarse_grain[0][p][1]
                 macro_state_q = new_coarse_grain[1][q][1]
-                macro_state = (macro_state_p * len(new_coarse_grain[0])) + macro_state_q
+                macro_state = (macro_state_p * len(new_coarse_grain[1])) + macro_state_q
 
                 state_map[macro_state] = micro_system_states.tolist()
         return state_map
@@ -329,8 +330,8 @@ class PhiCalculator:
         num_states_per_node=num_states_per_elem
         )
 
-        # TODO: adapt so that neurons can have different numbers of states.
-        states = reversed(Helpers.get_nary_states(len(num_states_per_elem), num_states_per_elem[0])) # not the TPM order! 
+        #states = reversed(Helpers.get_nary_states(len(num_states_per_elem), num_states_per_elem[0])) # not the TPM order! 
+        states = Helpers.get_system_states(num_states_per_elem)
         phis = []
         for state in states:
             subsystem = pyphi.Subsystem(network, state)
@@ -358,8 +359,6 @@ class PhiCalculator:
                 states.append(c_state_map)
                 num_states_l.append(c_num_states)
             
-        print(states)
-        print(num_states_l)
         """
         state_map_1, num_states_1 = {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]}, [2,2]
         state_map_2, num_states_2 = {0: [0], 1: [4,8,12], 2: [1,2,3], 3: [5,6,7,9,10,12,13,14,15]}, [2,2]
@@ -371,11 +370,14 @@ class PhiCalculator:
         phis = []
         for i in range(len(states)):
             state_map, num_states = states[i], num_states_l[i]
+            print(state_map, num_states)
+            print("\n")
             average_phi = PhiCalculator.get_macro_average_phi(micro_TPM, verbose=verbose, state_map=state_map, num_states_per_elem=num_states)
             phis.append(average_phi)
         return phis
 
 class Helpers:
+
     @staticmethod
     def get_bin_states(l):
         states = []
@@ -409,7 +411,37 @@ class Helpers:
             states.append(state)
         return states
     
+    @staticmethod
+    def get_system_states(state_nums):
+        elem_states = [list(range(i)) for i in state_nums]
+        states = elem_states[0]
+        for i in range(1,len(elem_states)):
+            states = Helpers.outer(states, elem_states[i], Helpers.join_ints)
+        return states
+    
+    @staticmethod
+    def outer(l1, l2, f):
+        res = []
+        for i in l1:
+            for j in l2:
+                res.append(f(i,j))
 
+        return res
+    
+    @staticmethod
+    def join_ints(i1, i2):
+        if isinstance(i1, tuple):
+            return (*i1,i2)
+        else:
+            return (i1, i2)
+    
+    @staticmethod
+    def optional_asterisk(tup):
+        """If tup is a tuple, then unpack it with asterisk, but otherwise 
+        just leave it be
+        """
+        
+        
 class DataGenerator:
     def __init__(self, TPM, base):
         self.TPM = TPM
@@ -443,6 +475,7 @@ class DataGenerator:
 
 
 if __name__ == "__main__":
+    
     ## LOAD DATA ## 
     n_143 = np.loadtxt("GLMCC/Cori_2016-12-14_probe1/cell143.txt") / 1000
     n_168 = np.loadtxt("GLMCC/Cori_2016-12-14_probe1/cell168.txt") / 1000
@@ -485,3 +518,10 @@ if __name__ == "__main__":
             else:
                 micro_phis[i,j] = None
                 macro_phis[i,j] = None
+    
+    """
+    print(list(reversed(Helpers.get_system_states([2,2]))))
+    states = reversed(Helpers.get_nary_states(2, 2)) # not the TPM order! 
+    print(list(states))
+    """
+    #print(CoarseGrainer.get_state_map([[[0], [1,2,3]], [[0], [1,2], [3]]]))
