@@ -201,7 +201,7 @@ class TPMMaker:
         
         return np.array([binarised_trains[i][0:min_length] for i in range(len(binarised_trains))])   # probably slow? 
 
-    
+
     @staticmethod
     def TPM_from_spiketrains(spiketrains, S, K, skip, required_obs):
         binarised_trains = TPMMaker.get_binarised_trains(spiketrains, S)
@@ -281,18 +281,30 @@ class CoarseGrainer:
 
         # for every element pair
         state_map = {}
-        for p in range(len(new_coarse_grain[0])):
-            for q in range(len(new_coarse_grain[1])):
-                states_p = [num_micro_states_per_elem[1] * e for e in new_coarse_grain[0][p][0]]
-                states_q = list(new_coarse_grain[1][q][0])
+        for q in range(len(new_coarse_grain[1])):
+            for p in range(len(new_coarse_grain[0])):
+                states_p = list(new_coarse_grain[0][p][0])
+                states_q = [num_micro_states_per_elem[0] * e for e in new_coarse_grain[1][q][0]]
                 
                 micro_system_states = np.add.outer(states_p, states_q).ravel()
-                macro_state_p = new_coarse_grain[0][p][1]
-                macro_state_q = new_coarse_grain[1][q][1]
-                macro_state = (macro_state_p * len(new_coarse_grain[1])) + macro_state_q
-
+                macro_state = p + q * len(new_coarse_grain[0])
                 state_map[macro_state] = micro_system_states.tolist()
         return state_map
+
+    @staticmethod
+    def get_state_maps(element_coarse_grainings):
+        """For a 2 element system, given coarse graining options for an element,
+           get the state maps for each coarse graining combination"""
+        states = []
+        num_states_l = []
+        for e1 in element_coarse_grainings:
+            for e2 in element_coarse_grainings:
+                c_state_map = CoarseGrainer.get_state_map([e1, e2])
+                c_num_states = [len(e) for e in [e1,e2]]
+
+                states.append(c_state_map)
+                num_states_l.append(c_num_states)
+        return states, num_states_l
 
 class PhiCalculator:
     @staticmethod
@@ -315,7 +327,8 @@ class PhiCalculator:
         if verbose:
             print(phis)
         return sum(phis) / len(phis)
-    
+            
+
     @staticmethod
     def get_macro_average_phi(micro_TPM, verbose=True, state_map=None, num_states_per_elem=None):
 
@@ -344,20 +357,13 @@ class PhiCalculator:
             print(sia.cut)
         return sum(phis) / len(phis)
 
+
     @staticmethod
     def all_coarsegrains_get_macro_average_phi(micro_TPM, verbose=True):
         
         # ways to coarse grain each element
-        element_coarse_grainings = [[[0], [1,2,3]], [[0,1,2],[3]], [[0], [1,2], [3]]]
-        states = []
-        num_states_l = []
-        for e1 in element_coarse_grainings:
-            for e2 in element_coarse_grainings:
-                c_state_map = CoarseGrainer.get_state_map([e1, e2])
-                c_num_states = [len(e) for e in [e1,e2]]
-
-                states.append(c_state_map)
-                num_states_l.append(c_num_states)
+        element_coarse_grainings = [[[0], [1,2,3]], [[0,1,2],[3]], [[0], [1,2], [3]], [[0], [1], [2], [3]]]
+        states, num_states_l = CoarseGrainer.get_state_maps(element_coarse_grainings)
             
         """
         state_map_1, num_states_1 = {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]}, [2,2]
@@ -473,6 +479,62 @@ class DataGenerator:
                     data[j, i+k] = binary_state[k]
         return data
 
+def get_phis(r, t, num_transitions, infolder, outfolder):
+    ### LOAD DATASET ###
+    print("get_phis")
+    i_sec = np.loadtxt(infolder + "/cell" + str(r) + ".txt") / 1000   # divide through as they are loaded in miliseconds
+    j_sec = np.loadtxt(infolder + "/cell" + str(t) + ".txt") / 1000
+    cluster = np.array([i_sec, j_sec])
+    print("after load dataset")
+    ### COMPUTE PHIS ###
+    NUM_COARSE_GRAININGS = 16
+    NUM_BITS = 2
+    skips = list(range(2,11,2))
+
+    max_binsize = 0.02  # 20 ms bins
+    min_binsize = 0.0029 # skip 1ms bins  -   never work and are very slow to compute
+    num_binsizes = 9
+    binsizes = np.linspace(min_binsize, max_binsize, num_binsizes)
+
+
+    micro_phis = np.zeros((len(binsizes), len(skips)))
+    macro_phis = [np.zeros((len(binsizes), len(skips),NUM_COARSE_GRAININGS))]
+
+    for i in range(len(binsizes)):
+        binsize = binsizes[i]
+        for j in range(len(skips)):
+            skip = skips[j]
+
+            try:
+                TPM,_ = TPMMaker.TPM_from_spiketrains(cluster,binsize,NUM_BITS,skip,num_transitions)
+                tpmname = "micro_" + str(i) + "_" + str(j) + "_occs_" + str(num_transitions) + "_bin_"+str(binsize)+"_skip_"+str(skip)+".csv" 
+                np.savetxt(outfolder+"/"+tpmname, TPM)
+                success = True
+            except:
+                success = False
+            
+            if success:
+                micro_phis[i,j] = PhiCalculator.get_micro_average_phi(TPM, verbose=False)
+                all_coarse_macros = PhiCalculator.all_coarsegrains_get_macro_average_phi(TPM, verbose=False)
+                macro_phis[i,j] = all_coarse_macros
+                #macro_phis[i,j] = np.nanmax(all_coarse_macros)
+            
+            else:
+                micro_phis[i,j] = None
+                macro_phis[i,j] = [None for i in range(NUM_COARSE_GRAININGS)]
+    
+    micro_phis = np.array(micro_phis, dtype=np.float64)
+    macro_phis = np.array(macro_phis, dtype=np.float64)
+
+    np.save(outfolder + "/micro_" + str(r) + "_" + str(t), micro_phis)
+    np.save(outfolder + "/macro_" + str(r) + "_" + str(t), macro_phis)
+    #max_micro = np.nanmax(micro_phis)
+    #max_macro = np.nanmax(macro_phis)
+    #macro_win = True if max_macro > max_micro else False
+
+    return (micro_phis, macro_phis, (r,t))
+
+
 
 if __name__ == "__main__":
     
@@ -482,7 +544,7 @@ if __name__ == "__main__":
     cluster_143_168 = np.array([n_143,n_168])
 
     NUM_BITS = 2
-    skips = list(range(2,11,2))
+    skips = [2]#list(range(2,11,2))
 
     max_binsize = 0.02  # 50 ms bins
     min_binsize = 0.001 # 1ms bins  -   probably won't work
