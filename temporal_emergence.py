@@ -247,6 +247,7 @@ class CoarseGrainer:
                 output_micro_indices = state_map[j]
                 
                 total_prob = 0
+                """
                 for output_state in output_micro_indices:
                     avg_for_output_state = 0
                     for input_state in input_micro_indices:
@@ -254,8 +255,15 @@ class CoarseGrainer:
 
                     avg_for_output_state = avg_for_output_state / len(input_micro_indices)
                     total_prob += avg_for_output_state
-        
-                new_TPM[i,j] = total_prob
+                """
+                for input_state in input_micro_indices:
+                    total_for_input_state = 0
+                    for output_state in output_micro_indices:
+                        total_for_input_state += TPM[input_state, output_state]
+                    
+                    total_prob += total_for_input_state
+                new_TPM[i,j] = total_prob / len(input_micro_indices)
+                
         return new_TPM
 
     @staticmethod
