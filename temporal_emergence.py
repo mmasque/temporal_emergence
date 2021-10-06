@@ -111,7 +111,6 @@ class TPMMaker:
         # start at K-1 because our state at time i looks BACK to i-1, i-2,.. to build the rest of state
         rand_indices = np.array(list(range(K-1, binaryneurons.shape[1] - skipby)))
         np.random.shuffle(rand_indices)
-
         for i in rand_indices:
             curr_state = binaryneurons[:,i-(K-1):(i+1)]
             i_c = TPMMaker.get_TPM_index(curr_state)
@@ -166,7 +165,7 @@ class TPMMaker:
         # start at K-1 because our state at time i looks BACK to i-1, i-2,.. to build the rest of state
         # but here we actually want to start at K-1 + startindex to shift to startindex 
         rand_indices = np.array(list(range(K-1+startindex, binaryneurons.shape[1] - skipby, 2)))
-        print(rand_indices)
+        #print(rand_indices)
         for i in rand_indices:
             curr_state = binaryneurons[:,i-(K-1):(i+1)]
             i_c = TPMMaker.get_TPM_index(curr_state)
@@ -315,8 +314,12 @@ class CoarseGrainer:
         return states, num_states_l
 
 class PhiCalculator:
+
     @staticmethod
-    def get_micro_average_phi(TPM,verbose=True):
+    def get_micro_phis(TPM, verbose=True):
+        """
+        Gets the state phis for a TPM with 2 elements, each 4 states.
+        """
         network = pyphi.Network(
         (TPM),
         num_states_per_node=[4,4]
@@ -334,24 +337,39 @@ class PhiCalculator:
             phis.append(sia.phi)
         if verbose:
             print(phis)
+        
+        return phis
+    
+    @staticmethod
+    def get_micro_average_phi(TPM,verbose=True):
+        phis = PhiCalculator.get_micro_phis(TPM, verbose)
         return sum(phis) / len(phis)
-            
 
     @staticmethod
-    def get_macro_average_phi(micro_TPM, verbose=True, state_map=None, num_states_per_elem=None):
+    def get_micro_weighted_average_phi(TPM,occurrences,verbose=True):
+        """
+        Weighted average of phis, weighting state phis by the occurrence probabilities
+        of each state. 
+        """
+        phis = PhiCalculator.get_micro_phis(TPM, verbose)
+        print(phis)
+        total_occs = sum(occurrences)
+        weights = [o / total_occs for o in occurrences]
+        return sum([phis[i] * weights[i] for i in range(len(phis))]), weights
+
+    @staticmethod
+    def get_macro_phis(micro_TPM, verbose=True, state_map=None, num_states_per_elem=None):
 
         if state_map == None or num_states_per_elem == None:   # have a default state map
             state_map = {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]} 
             num_states_per_elem = [2,2]
+        
         macro_TPM = CoarseGrainer.coarse_grain_nonbinary_TPM(micro_TPM, state_map, num_states_per_elem)
-        #np.savetxt("TPMs/macro_example_143_168.csv", macro_TPM)
-        # Macro analysis where bursting is one state, and everything else is another
         network = pyphi.Network(
         macro_TPM,
         num_states_per_node=num_states_per_elem
         )
 
-        #states = reversed(Helpers.get_nary_states(len(num_states_per_elem), num_states_per_elem[0])) # not the TPM order! 
         states = Helpers.get_system_states(num_states_per_elem)
         phis = []
         for state in states:
@@ -363,8 +381,28 @@ class PhiCalculator:
             print(sia.ces)
             print(sia.partitioned_ces)
             print(sia.cut)
+        
+        return phis
+
+    @staticmethod
+    def get_macro_average_phi(micro_TPM, verbose=True, state_map=None, num_states_per_elem=None):
+        phis = PhiCalculator.get_macro_phis(micro_TPM, verbose, state_map, num_states_per_elem)
         return sum(phis) / len(phis)
 
+    @staticmethod
+    def get_macro_weighted_average_phi(micro_TPM, occurrences, verbose=True, state_map=None, num_states_per_elem=None):
+        phis = PhiCalculator.get_macro_phis(micro_TPM, verbose, state_map, num_states_per_elem)
+        # TODO get rid of repeated code
+        if state_map == None or num_states_per_elem == None:   # have a default state map
+            state_map = {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]} 
+            num_states_per_elem = [2,2]
+
+        macro_occurrences = [sum([occurrences[i] for i in state_map[key]]) for key in state_map]
+        total_occurrences = sum(macro_occurrences)
+        weights = [m / total_occurrences for m in macro_occurrences]
+        weighted_phis = [phis[i]  * weights[i] for i in range(len(phis))]
+
+        return sum(weighted_phis) / len(weighted_phis)
 
     @staticmethod
     def all_coarsegrains_get_macro_average_phi(micro_TPM, verbose=True):
@@ -373,22 +411,33 @@ class PhiCalculator:
         element_coarse_grainings = [[[0], [1,2,3]], [[0,1,2],[3]], [[0], [1,2], [3]], [[0], [1], [2], [3]]]
         states, num_states_l = CoarseGrainer.get_state_maps(element_coarse_grainings)
             
-        """
-        state_map_1, num_states_1 = {0: [0,1,2, 4,5,6, 8,9,10], 1: [3,7,11], 2: [12,13,14], 3:[15]}, [2,2]
-        state_map_2, num_states_2 = {0: [0], 1: [4,8,12], 2: [1,2,3], 3: [5,6,7,9,10,12,13,14,15]}, [2,2]
-        state_map_3, num_states_3 = {0: [0], 1: [1, 2], 2: [3], 3: [4,8], 4: [5, 9, 6, 10], 5: [7,11], 6: [12], 7: [13, 14], 8: [15]}, [3,3]
-        
-        states = [state_map_1, state_map_2, state_map_3]
-        num_states_l = [num_states_1, num_states_2, num_states_3]
-        """
         phis = []
         for i in range(len(states)):
             state_map, num_states = states[i], num_states_l[i]
-            print(state_map, num_states)
-            print("\n")
+            if verbose:
+                print(state_map, num_states)
+                print("\n")
             average_phi = PhiCalculator.get_macro_average_phi(micro_TPM, verbose=verbose, state_map=state_map, num_states_per_elem=num_states)
             phis.append(average_phi)
+        
         return phis
+    
+    @staticmethod
+    def all_coarsegrains_get_macro_weighted_average_phi(micro_TPM, occurrences, verbose=True):
+        # ways to coarse grain each element
+        element_coarse_grainings = [[[0], [1,2,3]], [[0,1,2],[3]], [[0], [1,2], [3]], [[0], [1], [2], [3]]]
+        states, num_states_l = CoarseGrainer.get_state_maps(element_coarse_grainings)
+            
+        phis = []
+        for i in range(len(states)):
+            state_map, num_states = states[i], num_states_l[i]
+            if verbose:
+                print(state_map, num_states)
+                print("\n")
+            average_phi = PhiCalculator.get_macro_weighted_average_phi(micro_TPM, occurrences, verbose=verbose, state_map=state_map, num_states_per_elem=num_states)
+            phis.append(average_phi)
+        return phis
+
 
 class Helpers:
 
@@ -549,7 +598,13 @@ if __name__ == "__main__":
     ## LOAD DATA ## 
     n_143 = np.loadtxt("GLMCC/Cori_2016-12-14_probe1/cell143.txt") / 1000
     n_168 = np.loadtxt("GLMCC/Cori_2016-12-14_probe1/cell168.txt") / 1000
-    cluster_143_168 = np.array([n_143,n_168])
+    a = Neuron.binarise_spiketrain(n_143, 0.002)
+    b = Neuron.binarise_spiketrain(n_168, 0.002)
+    print(len(a))
+    print(len(b))
+    
+    n_168 = np.loadtxt("GLMCC/Cori_2016-12-14_probe1/cell168.txt") / 1000
+    cluster_143_168 = np.array([n_168,n_143])
 
     NUM_BITS = 2
     skips = [2]#list(range(2,11,2))
@@ -557,7 +612,7 @@ if __name__ == "__main__":
     max_binsize = 0.02  # 50 ms bins
     min_binsize = 0.001 # 1ms bins  -   probably won't work
     num_binsizes = 10
-    binsizes = [0.02]#np.linspace(min_binsize, max_binsize, num_binsizes)
+    binsizes = [0.002]#np.linspace(min_binsize, max_binsize, num_binsizes)
 
 
     num_transitions = 200
@@ -571,18 +626,24 @@ if __name__ == "__main__":
 
             try:
                 TPM,_ = TPMMaker.TPM_from_spiketrains(cluster_143_168,binsize,NUM_BITS,skip,num_transitions)
+                occurrences = TPMMaker.get_num_state_occurrences(cluster_143_168,binsize,NUM_BITS,skip)
                 #tpmname = "micro_143_168_bin_"+str(binsize)+"_skip_"+str(skip)+".csv" 
                 #np.savetxt("TPMs/"+tpmname, TPM)
+                print(occurrences)
+
                 success = True
-            except:
+            except ValueError:
                 success = False
                 print("Failed for binsize: " + str(binsize) + " and skip: " + str(skip))
             
             if success:
                 #micro_phis[i,j] = PhiCalculator.get_micro_average_phi(TPM, verbose=False)
                 #macro_phis[i,j] = PhiCalculator.get_macro_average_phi(TPM, verbose=False)
+                micro = PhiCalculator.get_micro_weighted_average_phi(TPM, occurrences, verbose=False)
+                macros_weighted = PhiCalculator.all_coarsegrains_get_macro_weighted_average_phi(TPM, occurrences, verbose=False)
                 macros = PhiCalculator.all_coarsegrains_get_macro_average_phi(TPM, verbose=False)
                 print(macros)
+                print(macros_weighted)
                 print("Success for binsize: " + str(binsize) + " and skip: " + str(skip))
             
             else:

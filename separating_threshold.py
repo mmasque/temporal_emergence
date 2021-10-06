@@ -44,7 +44,7 @@ def separating_threshold(bins,ys):
         peaks_100ms = peaks[np.where(x_peaks < 100)[0]]
 
         if peaks_100ms.size == 0: # require a peak in first 100ms
-            return False
+            raise ValueError("Didn't find a burst")
         
         # find index of max peak in the early peaks
         max_peak_100ms_ind = np.argmax(ys[peaks_100ms]) # index of peak in array of peaks
