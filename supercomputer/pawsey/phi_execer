@@ -1,0 +1,28 @@
+#!/bin/bash --login
+ 
+# SLURM directives
+#
+# Here we specify to SLURM we want two nodes (--nodes=2) with
+# a wall-clock time limit of one minute (--time=00:01:00)
+#
+# Replace [your-project] with the appropriate project name
+# following --account (e.g., --account=project123)
+ 
+#SBATCH --nodes=8
+#SBATCH --time=02:00:00
+#SBATCH --account=pawsey0352
+#SBATCH --export=NONE
+# Note we avoid any inadvertent OpenMP threading by setting
+# OMP_NUM_THREADS=1
+ 
+export OMP_NUM_THREADS=1
+ 
+# Run the desired code:
+module load python
+module load mpi4py
+module load numpy 
+module load matplotlib
+module load pandas
+export PYTHONPATH="${PYTHONPATH}:/group/pawsey0352/mmasque/software"
+
+srun -N 8 -n 192 python3 phi_for_num_occurrences.py
