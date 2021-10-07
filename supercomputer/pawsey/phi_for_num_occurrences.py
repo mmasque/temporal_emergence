@@ -4,11 +4,11 @@ from temporal_emergence import TPMMaker, PhiCalculator
 import numpy as np
 import pyphi
 from mpi4py import MPI
+pyphi.config.WELCOME_OFF = True
 pyphi.config.PARTITION_TYPE = 'ALL'
 pyphi.config.MEASURE = 'AID'
 pyphi.config.USE_SMALL_PHI_DIFFERENCE_FOR_CES_DISTANCE = True
 pyphi.config.ASSUME_CUTS_CANNOT_CREATE_NEW_CONCEPTS = True
-pyphi.config.WELCOME_OFF = True
 pyphi.config.PROGRESS_BARS = False
 pyphi.config.PARALLEL_CUT_EVALUATION = False
 pyphi.config.LOG_FILE_LEVEL = None
@@ -93,5 +93,6 @@ if __name__ == "__main__":
         else:
             end_reps = rank * number_reps
         for i in range((rank-1)*number_reps, end_reps):
+            print(f"COMPUTING FOR {int(bidirectionally[i][0]), int(bidirectionally[i][1])}")
             get_phis(int(bidirectionally[i][0]), int(bidirectionally[i][1]), infolder, 
             outfolder, num_transitions)
