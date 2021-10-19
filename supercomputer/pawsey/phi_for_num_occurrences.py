@@ -80,19 +80,14 @@ if __name__ == "__main__":
     outfolder = "results"
     infolder = "data"
     num_transitions = 200
-    if rank == 0:
+    if rank == 0:   # if we are the root node, case the data to other nodes
         bidirectionally = np.loadtxt("bidirectionally.txt")
-        #small_bidirectionally = range(20)#[(143,168), (288,289), ]
         bidirectionally = comm.bcast(bidirectionally, root=0)
     else:
         bidirectionally = None
-        bidirectionally = comm.bcast(bidirectionally, root=0)
-        number_reps = len(bidirectionally) // (size - 1)
-        if (len(bidirectionally) - rank * number_reps) < number_reps:
-            end_reps = len(bidirectionally)
-        else:
-            end_reps = rank * number_reps
-        for i in range((rank-1)*number_reps, end_reps):
-            print(f"COMPUTING FOR {int(bidirectionally[i][0]), int(bidirectionally[i][1])}")
-            get_phis(int(bidirectionally[i][0]), int(bidirectionally[i][1]), infolder, 
-            outfolder, num_transitions)
+        bidirectionally = comm.bcast(bidirectionally, root=0)   # receive the cast
+        # TODO this is inneficient, better to do this once in the root and use Send and Recv
+        split_bidirectionally = np.array_split(bidirectionally, (size - 1))
+        for i,j in split_bidirectionally[rank-1]:
+            print(f"COMPUTING FOR {int(i), int(j)}")
+            get_phis(int(i), int(j), infolder, outfolder, num_transitions)
